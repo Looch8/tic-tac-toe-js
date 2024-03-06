@@ -16,20 +16,38 @@ const playerTwo = createPlayer("player Two", "o");
 
 console.log(playerOne.token);
 
+// Winning conditions to compare agaisnt
+const winConditions = [
+	[0, 1, 2],
+	[3, 4, 5],
+	[6, 7, 8],
+	[0, 3, 6],
+	[1, 4, 7],
+	[2, 5, 8],
+	[0, 4, 8],
+	[2, 4, 6],
+];
+
+console.log(winConditions);
+
 Gameboard.board[1] = "x";
+Gameboard.board[3] = "o";
 
 console.log(Gameboard);
 
 console.log(playerOne, playerTwo);
 
-function placeToken(token) {
-	if (
-		Gameboard.board[token] == Gameboard.board["x"] ||
-		Gameboard.board[token] == Gameboard.board["o"]
-	) {
-		console.log("that space is taken");
-	}
-}
+// function placeToken(token) {
+// 	// if (
+// 	// 	Gameboard.board[token] == Gameboard.board["x"] ||
+// 	// 	Gameboard.board[token] == Gameboard.board["o"]
+// 	// ) {
+// 	// 	console.log("that space is taken");
+// 	// }
+// 	return {
+
+//     }
+// }
 
 function game() {
 	// Check which players turn it is (Start with playerOne)
