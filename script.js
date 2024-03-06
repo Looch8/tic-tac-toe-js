@@ -1,6 +1,6 @@
 // IIFE Gameboard
 const Gameboard = (function () {
-	const board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+	const board = ["", "", "", "", "", "", "", "", ""];
 	return {
 		board,
 	};
@@ -8,13 +8,37 @@ const Gameboard = (function () {
 
 console.log(Gameboard);
 
-function createPlayer(playerName) {
-	return { playerName };
+function createPlayer(playerName, token) {
+	return { playerName, token };
 }
-console.log(createPlayer("player One"));
-console.log(createPlayer("player Two"));
+const playerOne = createPlayer("player One", "x");
+const playerTwo = createPlayer("player Two", "o");
 
-function game() {}
+console.log(playerOne.token);
+
+Gameboard.board[1] = "x";
+
+console.log(Gameboard);
+
+console.log(playerOne, playerTwo);
+
+function placeToken(token) {
+	if (
+		Gameboard.board[token] == Gameboard.board["x"] ||
+		Gameboard.board[token] == Gameboard.board["o"]
+	) {
+		console.log("that space is taken");
+	}
+}
+
+function game() {
+	// Check which players turn it is (Start with playerOne)
+	placeToken();
+	// Player chooses array element to place their token
+	// if board.arrayElement == '' place token ie board.arrayElement = player.token
+	// Else if board.arrayElement == 'x' or 'o'
+	// return null
+}
 
 // IIFE DisplayController
 // const DisplayController = (function () {})();
