@@ -1,3 +1,4 @@
+// IIFE Gameboard
 const Gameboard = (function () {
 	const board = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 	return {
@@ -6,6 +7,17 @@ const Gameboard = (function () {
 })();
 
 console.log(Gameboard);
+
+function createPlayer(playerName) {
+	return { playerName };
+}
+console.log(createPlayer("player One"));
+console.log(createPlayer("player Two"));
+
+function game() {}
+
+// IIFE DisplayController
+// const DisplayController = (function () {})();
 
 // You’re going to store the gameboard as an array inside of a Gameboard object, so start there! Your players are also going to be stored in objects, and you’re probably going to want an object to control the flow of the game itself.
 // Your main goal here is to have as little global code as possible. Try tucking as much as you can inside factories. If you only need a single instance of something (e.g. the gameboard, the displayController etc.) then wrap the factory inside an IIFE (module pattern) so it cannot be reused to create additional instances.
