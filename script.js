@@ -11,12 +11,12 @@ console.log(Gameboard);
 function createPlayer(playerName, token) {
 	return { playerName, token };
 }
-const playerOne = createPlayer("player One", "x");
-const playerTwo = createPlayer("player Two", "o");
+const playerOne = createPlayer("player One", "x", true);
+const playerTwo = createPlayer("player Two", "o", false);
 
 console.log(playerOne.token);
 
-// Winning conditions to compare agaisnt
+// Winning conditions to compare against
 const winConditions = [
 	[0, 1, 2],
 	[3, 4, 5],
@@ -28,10 +28,31 @@ const winConditions = [
 	[2, 4, 6],
 ];
 
-console.log(winConditions);
+Gameboard.board[8] = "o";
+Gameboard.board[4] = "o";
+Gameboard.board[0] = "o";
 
-Gameboard.board[1] = "x";
-Gameboard.board[3] = "o";
+// Checking if board has 'x' or 'o' in the winning conditions subarrays
+const checkWin = function () {
+	for (let i = 0; i < winConditions.length; i++) {
+		if (
+			Gameboard.board[winConditions[i][0]] == "x" &&
+			Gameboard.board[winConditions[i][1]] == "x" &&
+			Gameboard.board[winConditions[i][2]] == "x"
+		) {
+			console.log("Player One Wins!");
+		} else if (
+			Gameboard.board[winConditions[i][0]] == "o" &&
+			Gameboard.board[winConditions[i][1]] == "o" &&
+			Gameboard.board[winConditions[i][2]] == "o"
+		) {
+			console.log("Player Two Wins!");
+		}
+	}
+};
+checkWin();
+
+console.log(winConditions);
 
 console.log(Gameboard);
 
