@@ -55,12 +55,14 @@ const Game = (function () {
 					Gameboard.board[position] = playerOne.marker;
 					playerOne.isTurn = false;
 					playerTwo.isTurn = true;
-					activePlayer.textContent = "Turn: Player 2";
+					activePlayer.textContent = "Player 2";
+					activePlayer.style.color = "green";
 				} else if (playerTwo.isTurn == true) {
 					Gameboard.board[position] = playerTwo.marker;
 					playerTwo.isTurn = false;
 					playerOne.isTurn = true;
-					activePlayer.textContent = "Turn: Player 1";
+					activePlayer.textContent = "Player 1";
+					activePlayer.style.color = "blue";
 				}
 			}
 
