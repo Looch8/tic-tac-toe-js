@@ -17,9 +17,6 @@ const renderBoard = () => {
 };
 renderBoard();
 
-// IIFE DisplayController
-const DisplayController = (function () {})();
-
 function createPlayer(playerName, marker, isTurn) {
 	return { playerName, marker, isTurn };
 }
@@ -38,29 +35,12 @@ const winConditions = [
 	[2, 4, 6],
 ];
 
-function placeMarker(marker) {
-	if (Gameboard.board[key] == null) {
+function determineWinner() {
+	for (const key in winConditions) {
+		if (winConditions[key] == Gameboard.board[key]);
 	}
 }
-
-// Determine play turn, take turn by placing marker if cell is empty then switch players turn
-function handlePlayerTurn(position) {
-	if (Gameboard.board[position] == null) {
-		if (playerOne.isTurn == true) {
-			Gameboard.board[position] = playerOne.marker;
-			playerOne.isTurn = false;
-			playerTwo.isTurn = true;
-		} else if (playerTwo.isTurn == true) {
-			Gameboard.board[position] = playerTwo.marker;
-			playerTwo.isTurn = false;
-			playerOne.isTurn = true;
-		}
-	}
-	renderBoard();
-}
-handlePlayerTurn(0);
-
-console.log(Gameboard.board);
+determineWinner();
 
 // Checking if board has 'x' or 'o' in the winning conditions subarrays
 
@@ -76,10 +56,30 @@ console.log(Gameboard.board);
 //     }
 // }
 
-function game() {
-	// Check which players turn it is (Start with playerOne)
-	// Player chooses array element to place their token
-	// if board.arrayElement == '' place token ie board.arrayElement = player.token
-	// Else if board.arrayElement == 'x' or 'o'
-	// return null
-}
+const game = {
+	// Render the gameboard to DOM
+	renderBoard: () => {
+		for (const key in cells) {
+			cells[key].textContent = Gameboard.board[key];
+		}
+	},
+	// Determine play turn, take turn by placing marker if cell is empty then switch players turn
+	handlePlayerTurn: function (position) {
+		if (Gameboard.board[position] == null) {
+			if (playerOne.isTurn == true) {
+				Gameboard.board[position] = playerOne.marker;
+				playerOne.isTurn = false;
+				playerTwo.isTurn = true;
+			} else if (playerTwo.isTurn == true) {
+				Gameboard.board[position] = playerTwo.marker;
+				playerTwo.isTurn = false;
+				playerOne.isTurn = true;
+			}
+		}
+		renderBoard();
+	},
+};
+
+game.handlePlayerTurn(6);
+game.handlePlayerTurn(0);
+game.handlePlayerTurn(5);
