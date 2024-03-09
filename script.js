@@ -5,7 +5,7 @@ const cells = document.querySelectorAll(".cell");
 // IIFE Gameboard
 const Gameboard = (function () {
 	return {
-		board: [null, "o", "x", "o", "x", "x", "o", "x", "o"],
+		board: [null, null, null, null, null, null, null, null, null],
 	};
 })();
 
@@ -20,8 +20,8 @@ renderBoard();
 // IIFE DisplayController
 const DisplayController = (function () {})();
 
-function createPlayer(playerName, token, isTurn) {
-	return { playerName, token, isTurn };
+function createPlayer(playerName, marker, isTurn) {
+	return { playerName, marker, isTurn };
 }
 const playerOne = createPlayer("player One", "x", true);
 const playerTwo = createPlayer("player Two", "o", false);
@@ -37,6 +37,29 @@ const winConditions = [
 	[0, 4, 8],
 	[2, 4, 6],
 ];
+
+function placeMarker(marker) {
+	if (Gameboard.board[key] == null) {
+	}
+}
+
+// Determine play turn, take turn by placing marker then switch players turn
+function takeTurn(position) {
+	if (playerOne.isTurn == true) {
+		Gameboard.board[position] = playerOne.marker;
+		playerOne.isTurn = false;
+		playerTwo.isTurn = true;
+	} else if (playerTwo.isTurn == true) {
+		Gameboard.board[position] = playerTwo.marker;
+		playerTwo.isTurn = false;
+		playerOne.isTurn = true;
+	}
+}
+
+takeTurn(1);
+takeTurn(3);
+takeTurn(4);
+console.log(Gameboard.board);
 
 // Checking if board has 'x' or 'o' in the winning conditions subarrays
 
