@@ -56,6 +56,7 @@ function handlePlayerTurn(position) {
 			playerOne.isTurn = true;
 		}
 	}
+	renderBoard();
 }
 handlePlayerTurn(0);
 
@@ -77,7 +78,6 @@ console.log(Gameboard.board);
 
 function game() {
 	// Check which players turn it is (Start with playerOne)
-	placeToken();
 	// Player chooses array element to place their token
 	// if board.arrayElement == '' place token ie board.arrayElement = player.token
 	// Else if board.arrayElement == 'x' or 'o'
