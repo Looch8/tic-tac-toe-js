@@ -5,13 +5,16 @@ const cells = document.querySelectorAll(".cell");
 // IIFE Gameboard
 const Gameboard = (function () {
 	return {
-		board: ["x", "o", "x", "o", "x", "x", "o", "x", "o"],
+		board: [null, "o", "x", "o", "x", "x", "o", "x", "o"],
 	};
 })();
 
-for (const key in cells) {
-	cells[key].textContent = Gameboard.board[key];
-}
+// Render the gameboard to DOM
+const renderBoard = (() => {
+	for (const key in cells) {
+		cells[key].textContent = Gameboard.board[key];
+	}
+})();
 
 // IIFE DisplayController
 const DisplayController = (function () {})();
