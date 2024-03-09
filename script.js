@@ -1,6 +1,10 @@
 // Query selectors
 // const gameboardDOM = document.querySelector("#gameboard");
 const cells = document.querySelectorAll(".cell");
+const activePlayer = document.querySelector("#active-player");
+
+// // Created elements
+// let currentPlayer = document.createElement("h5");
 
 // IIFE Gameboard
 const Gameboard = (function () {
@@ -51,12 +55,15 @@ const Game = (function () {
 					Gameboard.board[position] = playerOne.marker;
 					playerOne.isTurn = false;
 					playerTwo.isTurn = true;
+					activePlayer.textContent = "Turn: Player 2";
 				} else if (playerTwo.isTurn == true) {
 					Gameboard.board[position] = playerTwo.marker;
 					playerTwo.isTurn = false;
 					playerOne.isTurn = true;
+					activePlayer.textContent = "Turn: Player 1";
 				}
 			}
+
 			Game.renderBoard();
 
 			return {
@@ -67,9 +74,14 @@ const Game = (function () {
 	};
 })();
 
-cells.forEach((cell) => {
-	cell.addEventListener("click", () => {
-		Game.handlePlayerTurn(cell.id - 1);
-		console.log(cell.id);
+// TO click cells and call playerturn
+function handlePlayerClick() {
+	cells.forEach((cell) => {
+		cell.addEventListener("click", () => {
+			// -1 to deal with Ids in the HTML
+			Game.handlePlayerTurn(cell.id - 1);
+			console.log(cell.id);
+		});
 	});
-});
+}
+handlePlayerClick();

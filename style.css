@@ -26,8 +26,20 @@
 #gameboard {
 	padding: 40px calc((100% - (255px * 3)) / 2);
 	margin: auto;
-	outline: auto;
+
 	display: flex;
 	flex-wrap: wrap;
-	margin-top: 10%;
+	margin-top: 0;
+}
+
+h1 {
+	text-align: center;
+	font-size: 4em;
+}
+
+h2 {
+	margin-left: 50px;
+	padding: 0;
+	font-size: 2em;
+	text-align: center;
 }
