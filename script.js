@@ -42,6 +42,7 @@ function determineWinner() {
 }
 determineWinner();
 
+// Handle flow of game
 const Game = (function () {
 	return {
 		// Render the gameboard to DOM
