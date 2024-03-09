@@ -1,5 +1,5 @@
 // Query selectors
-const gameboardDOM = document.querySelector("#gameboard");
+// const gameboardDOM = document.querySelector("#gameboard");
 const cells = document.querySelectorAll(".cell");
 
 // IIFE Gameboard
@@ -10,16 +10,15 @@ const Gameboard = (function () {
 })();
 
 // Render the gameboard to DOM
-const renderBoard = (() => {
+const renderBoard = () => {
 	for (const key in cells) {
 		cells[key].textContent = Gameboard.board[key];
 	}
-})();
+};
+renderBoard();
 
 // IIFE DisplayController
 const DisplayController = (function () {})();
-
-console.log(Gameboard);
 
 function createPlayer(playerName, token, isTurn) {
 	return { playerName, token, isTurn };
