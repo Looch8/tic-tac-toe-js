@@ -35,6 +35,7 @@ const winConditions = [
 	[2, 4, 6],
 ];
 
+// TODO
 function determineWinner() {
 	for (const key in winConditions) {
 		if (winConditions[key] == Gameboard.board[key]);
