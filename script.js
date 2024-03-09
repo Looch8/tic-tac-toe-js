@@ -43,22 +43,22 @@ function placeMarker(marker) {
 	}
 }
 
-// Determine play turn, take turn by placing marker then switch players turn
-function takeTurn(position) {
-	if (playerOne.isTurn == true) {
-		Gameboard.board[position] = playerOne.marker;
-		playerOne.isTurn = false;
-		playerTwo.isTurn = true;
-	} else if (playerTwo.isTurn == true) {
-		Gameboard.board[position] = playerTwo.marker;
-		playerTwo.isTurn = false;
-		playerOne.isTurn = true;
+// Determine play turn, take turn by placing marker if cell is empty then switch players turn
+function handlePlayerTurn(position) {
+	if (Gameboard.board[position] == null) {
+		if (playerOne.isTurn == true) {
+			Gameboard.board[position] = playerOne.marker;
+			playerOne.isTurn = false;
+			playerTwo.isTurn = true;
+		} else if (playerTwo.isTurn == true) {
+			Gameboard.board[position] = playerTwo.marker;
+			playerTwo.isTurn = false;
+			playerOne.isTurn = true;
+		}
 	}
 }
+handlePlayerTurn(0);
 
-takeTurn(1);
-takeTurn(3);
-takeTurn(4);
 console.log(Gameboard.board);
 
 // Checking if board has 'x' or 'o' in the winning conditions subarrays
