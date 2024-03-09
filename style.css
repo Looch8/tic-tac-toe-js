@@ -1,8 +1,6 @@
-/* body {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-} */
+body {
+	background-color: rgb(140, 192, 237);
+}
 
 .cell {
 	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
