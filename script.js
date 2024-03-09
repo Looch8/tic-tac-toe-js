@@ -9,14 +9,6 @@ const Gameboard = (function () {
 	};
 })();
 
-// Render the gameboard to DOM
-const renderBoard = () => {
-	for (const key in cells) {
-		cells[key].textContent = Gameboard.board[key];
-	}
-};
-renderBoard();
-
 function createPlayer(playerName, marker, isTurn) {
 	return { playerName, marker, isTurn };
 }
@@ -65,7 +57,12 @@ const Game = (function () {
 					playerOne.isTurn = true;
 				}
 			}
-			renderBoard();
+			Game.renderBoard();
+
+			return {
+				renderBoard: Game.renderBoard,
+				handlePlayerTurn: Game.handlePlayerTurn,
+			};
 		},
 	};
 })();
@@ -73,3 +70,7 @@ const Game = (function () {
 Game.handlePlayerTurn(6);
 Game.handlePlayerTurn(0);
 Game.handlePlayerTurn(5);
+Game.handlePlayerTurn(2);
+Game.handlePlayerTurn(3);
+Game.handlePlayerTurn(1);
+Game.handlePlayerTurn(4);
