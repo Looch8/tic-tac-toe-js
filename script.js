@@ -67,10 +67,9 @@ const Game = (function () {
 	};
 })();
 
-Game.handlePlayerTurn(6);
-Game.handlePlayerTurn(0);
-Game.handlePlayerTurn(5);
-Game.handlePlayerTurn(2);
-Game.handlePlayerTurn(3);
-Game.handlePlayerTurn(1);
-Game.handlePlayerTurn(4);
+cells.forEach((cell) => {
+	cell.addEventListener("click", () => {
+		Game.handlePlayerTurn(cell.id - 1);
+		console.log(cell.id);
+	});
+});
