@@ -3,9 +3,6 @@
 const cells = document.querySelectorAll(".cell");
 const activePlayer = document.querySelector("#active-player");
 
-// // Created elements
-// let currentPlayer = document.createElement("h5");
-
 // IIFE Gameboard
 const Gameboard = (function () {
 	return {
@@ -30,14 +27,6 @@ const winConditions = [
 	[0, 4, 8],
 	[2, 4, 6],
 ];
-
-// TODO
-function determineWinner() {
-	for (const key in winConditions) {
-		if (winConditions[key] == Gameboard.board[key]);
-	}
-}
-determineWinner();
 
 // Handle flow of game
 const Game = (function () {
@@ -87,3 +76,24 @@ function handlePlayerClick() {
 	});
 }
 handlePlayerClick();
+
+// TODO
+function determineWinner() {
+	for (let i = 0; i < winConditions.length; i++) {
+		let [a, b, c] = winConditions[i];
+		console.log(a);
+		console.log(b);
+		console.log(c);
+
+		if (
+			Gameboard.board[a] &&
+			Gameboard.board[a] == Gameboard.board[b] &&
+			Gameboard.board[a] == Gameboard.board[c]
+		) {
+			console.log("win");
+		}
+	}
+}
+determineWinner();
+
+// So you have a list of 3 indices that you want to confirm have the same non-null value in your board?
