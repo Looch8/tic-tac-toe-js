@@ -2,6 +2,7 @@
 
 const cells = document.querySelectorAll(".cell");
 const activePlayer = document.querySelector("#active-player");
+const reset = document.querySelector("#reset");
 
 // IIFE Gameboard
 const Gameboard = (function () {
@@ -112,5 +113,14 @@ function handlePlayerClick() {
 }
 handlePlayerClick();
 
+function resetGame() {
+	Gameboard.board = [null, null, null, null, null, null, null, null, null];
+
+	playing = true;
+	Game.handlePlayerTurn();
+	Game.renderBoard();
+}
+
+reset.addEventListener("click", resetGame);
 // TODO
 // Clean up the interface to allow players to put in their names, include a button to start/restart the game and add a display element that shows the results upon game end!
