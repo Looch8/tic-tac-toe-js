@@ -100,5 +100,3 @@ function determineWinner() {
 	}
 }
 determineWinner();
-
-// So you have a list of 3 indices that you want to confirm have the same non-null value in your board?
