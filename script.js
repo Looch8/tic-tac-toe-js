@@ -1,5 +1,5 @@
 // Query selectors
-// const gameboardDOM = document.querySelector("#gameboard");
+
 const cells = document.querySelectorAll(".cell");
 const activePlayer = document.querySelector("#active-player");
 
@@ -62,6 +62,37 @@ const Game = (function () {
 				handlePlayerTurn: Game.handlePlayerTurn,
 			};
 		},
+
+		determineWinner: () => {
+			for (let i = 0; i < winConditions.length; i++) {
+				let [a, b, c] = winConditions[i];
+
+				if (
+					Gameboard.board[a] &&
+					Gameboard.board[a] == Gameboard.board[b] &&
+					Gameboard.board[a] == Gameboard.board[c]
+				) {
+					// To change winning color to red when a player wins
+					activePlayer.style.color =
+						Gameboard.board[a] == "blue" || "green" ? "red" : "red";
+					activePlayer.textContent = "WINNER!";
+					// Stop players from placing tokens once a player wins
+					playing = false;
+				}
+				// handle Draw
+				if (
+					Gameboard.board.every((element) => element !== null) &&
+					Gameboard.board !== Gameboard.board[b] &&
+					Gameboard.board[a] !== Gameboard.board[c]
+				) {
+					activePlayer.textContent = "DRAW!";
+					activePlayer.style.color =
+						Gameboard.board[a] == "blue" || "green"
+							? "brown"
+							: "brown";
+				}
+			}
+		},
 	};
 })();
 
@@ -74,7 +105,7 @@ function handlePlayerClick() {
 				// -1 to deal with Ids in the HTML
 				Game.handlePlayerTurn(cell.id - 1);
 				// Determine winner
-				determineWinner();
+				Game.determineWinner();
 			}
 		});
 	});
@@ -82,21 +113,4 @@ function handlePlayerClick() {
 handlePlayerClick();
 
 // TODO
-function determineWinner() {
-	for (let i = 0; i < winConditions.length; i++) {
-		let [a, b, c] = winConditions[i];
-
-		if (
-			Gameboard.board[a] &&
-			Gameboard.board[a] == Gameboard.board[b] &&
-			Gameboard.board[a] == Gameboard.board[c]
-		) {
-			// To keep color of current player when displaying winner
-			activePlayer.style = "blue" ? "green" : "blue";
-			activePlayer.textContent = "WINNER!";
-			// Stop players from placing tokens once a player wins
-			playing = false;
-		}
-	}
-}
-determineWinner();
+// Clean up the interface to allow players to put in their names, include a button to start/restart the game and add a display element that shows the results upon game end!
