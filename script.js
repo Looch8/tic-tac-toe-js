@@ -66,12 +66,16 @@ const Game = (function () {
 })();
 
 // TO click cells and call playerturn
+let playing = true;
 function handlePlayerClick() {
 	cells.forEach((cell) => {
 		cell.addEventListener("click", () => {
-			// -1 to deal with Ids in the HTML
-			Game.handlePlayerTurn(cell.id - 1);
-			console.log(cell.id);
+			if (playing == true) {
+				// -1 to deal with Ids in the HTML
+				Game.handlePlayerTurn(cell.id - 1);
+				// Determine winner
+				determineWinner();
+			}
 		});
 	});
 }
@@ -81,16 +85,17 @@ handlePlayerClick();
 function determineWinner() {
 	for (let i = 0; i < winConditions.length; i++) {
 		let [a, b, c] = winConditions[i];
-		console.log(a);
-		console.log(b);
-		console.log(c);
 
 		if (
 			Gameboard.board[a] &&
 			Gameboard.board[a] == Gameboard.board[b] &&
 			Gameboard.board[a] == Gameboard.board[c]
 		) {
-			console.log("win");
+			// To keep color of current player when displaying winner
+			activePlayer.style = "blue" ? "green" : "blue";
+			activePlayer.textContent = "WINNER!";
+			// Stop players from placing tokens once a player wins
+			playing = false;
 		}
 	}
 }
