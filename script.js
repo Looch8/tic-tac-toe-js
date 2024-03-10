@@ -14,8 +14,8 @@ const Gameboard = (function () {
 function createPlayer(playerName, marker, isTurn) {
 	return { playerName, marker, isTurn };
 }
-const playerOne = createPlayer("player One", "x", true);
-const playerTwo = createPlayer("player Two", "o", false);
+let playerOne = createPlayer("player One", "x", true);
+let playerTwo = createPlayer("player Two", "o", false);
 
 // Winning conditions to compare against
 const winConditions = [
@@ -115,12 +115,9 @@ handlePlayerClick();
 
 function resetGame() {
 	Gameboard.board = [null, null, null, null, null, null, null, null, null];
-
+	Game.renderBoard();
 	playing = true;
 	Game.handlePlayerTurn();
-	Game.renderBoard();
 }
 
 reset.addEventListener("click", resetGame);
-// TODO
-// Clean up the interface to allow players to put in their names, include a button to start/restart the game and add a display element that shows the results upon game end!

@@ -41,3 +41,14 @@ h2 {
 	text-align: center;
 	color: blue;
 }
+
+#reset {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 10%;
+}
